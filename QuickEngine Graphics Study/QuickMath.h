@@ -1,6 +1,6 @@
 /*******************************************************************************************
 *	QuickEngine Graphics Study															   *
-*	pch.h																			   *
+*	QuickMath.h																			   *
 *	Copyright 2019 Rogue-Gambler <https://github.com/Rogue-Gambler>						   *
 *																						   *
 *	This file is part of the QuickEngine Graphics Study.								   *
@@ -20,51 +20,15 @@
 *******************************************************************************************/
 
 #pragma once
+#include <cmath>
 
-#include <WinSDKVer.h>
-#define _WIN32_WINNT 0x0601
-#include <SDKDDKVer.h>
+#define piF	3.14159.0f
+#define epsilonF 0.00001f
 
-// Use the C++ standard templated min/max
-#define NOMINMAX
-
-// DirectX apps don't need GDI
-#define NODRAWTEXT
-#define NOGDI
-#define NOBITMAP
-
-// Include <mcx.h> if you need this
-#define NOMCX
-
-// Include <winsvc.h> if you need this
-#define NOSERVICE
-
-// WinHelp is deprecated
-#define NOHELP
-
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
-#include <wrl/client.h>
-
-#include <d3d11_1.h>
-#include <dxgi1_2.h>
-#include <DirectXMath.h>
-#include <DirectXColors.h>
-
-#include <algorithm>
-#include <exception>
-#include <memory>
-#include <stdexcept>
-
-namespace DX
+class QuickMath
 {
-    inline void ThrowIfFailed(HRESULT hr)
-    {
-        if (FAILED(hr))
-        {
-            // Set a breakpoint on this line to catch DirectX API errors
-            throw std::exception();
-        }
-    }
-}
+public:
+	QuickMath();
+	~QuickMath();
+};
+
