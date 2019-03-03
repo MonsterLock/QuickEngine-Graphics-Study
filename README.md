@@ -24,11 +24,10 @@
 - Intermediate/Advanced C++
 - Fundamentals of Computer Graphics
 
+This project was created using the Visual C++ template *Direct3D Win32 Game* following [the basic game loop setup tutorial](https://github.com/Microsoft/DirectXTK/wiki/The-basic-game-loop)
 
-**Documentation**:
+## Documentation
 - [Resources](DOCUMENTATION/RESOURCES.md) that help establish or even inspire this codebase
 - Updates (Coming soon)
 
-**Additional Information**: This project was created using the Visual C++ template *Direct3D Win32 Game* following [the basic game loop setup tutorial](https://github.com/Microsoft/DirectXTK/wiki/The-basic-game-loop)
-
-**Thanks**: Special mention and thanks to my family and friends. A lot of people in academic discords are also all greatly appreciated for the time and patience spent responding to my questions.
+**Thanks**: Special mention and thanks to my family and friends. A lot of people in academic discords are also all greatly appreciated for the time and patience spent responding to my questions and teaching me many concepts.
