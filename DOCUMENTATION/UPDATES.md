@@ -23,3 +23,15 @@
 - Added functions to QuickMath.h
 - Added QuickVec2.h file
 - [Added DirectX Tool Kit](https://github.com/Microsoft/DirectXTK/wiki/Adding-the-DirectX-Tool-Kit)
+
+*March 4, 2019*:
+- Completed [Sprites and textures](https://github.com/Microsoft/DirectXTK/wiki/Sprites-and-textures)
+ - Loading a texture
+ - Drawing a sprite
+ - Alpha mode (Change the use of our .png to straight alpha)
+ - Use DDS files for textures (Convert from using a PNG and the Windows Imaging Component(WIC) to A DDS file using the DirectXTex texconv command-line tool)
+ - Rotating a sprite
+ - Scaling a sprite
+ - Tinting a sprite
+ - Tiling a sprite
+ - Drawing a background image
