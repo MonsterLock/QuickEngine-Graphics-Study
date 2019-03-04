@@ -28,6 +28,6 @@ This project was created using the Visual C++ template *Direct3D Win32 Game* fol
 
 ## Documentation
 - [Resources](DOCUMENTATION/RESOURCES.md) that help establish or even inspire this codebase
-- Updates (Coming soon)
+- [Updates](DOCUMENTATION/UPDATES.md)
 
 **Thanks**: Special mention and thanks to my family and friends. A lot of people in academic discords are also all greatly appreciated for the time and patience spent responding to my questions and teaching me many concepts.
