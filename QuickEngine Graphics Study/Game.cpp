@@ -74,6 +74,8 @@ void Game::Update(DX::StepTimer const& timer)
 
     // TODO: Add your game logic here.
     elapsedTime;
+	m_ship->Update(elapsedTime);
+	m_stars->Update(elapsedTime * 500);
 }
 
 // Draws the scene.
@@ -90,18 +92,19 @@ void Game::Render()
     // TODO: Add your rendering code here.
 	float time = float(m_timer.GetTotalSeconds());
 
-	m_spriteBatch->Begin();
-
-	m_spriteBatch->Draw(m_background.Get(), m_fullscreenRect);
-
+	//m_spriteBatch->Begin();
+	//m_spriteBatch->Draw(m_background.Get(), m_fullscreenRect);
 	//m_spriteBatch->Draw(m_texture.Get(), m_screenPos, &m_tileRect, Colors::GreenYellow,
 	//	cosf(time) * 4.0f, m_origin,
 	//	cosf(time) + 2.0f);
+	//m_spriteBatch->Draw(m_texture.Get(), m_screenPos, nullptr, Colors::Crimson,
+	//	cosf(time) * 4.0f, m_origin,
+	//	cosf(time) + 2.0f);
+	//m_spriteBatch->End();
 
-	m_spriteBatch->Draw(m_texture.Get(), m_screenPos, nullptr, Colors::Crimson,
-		cosf(time) * 4.0f, m_origin,
-		cosf(time) + 2.0f);
-
+	m_spriteBatch->Begin();
+	m_stars->Draw(m_spriteBatch.get());
+	m_ship->Draw(m_spriteBatch.get(), m_shipPos);
 	m_spriteBatch->End();
 
     Present();
@@ -247,34 +250,47 @@ void Game::CreateDevice()
 
     // TODO: Initialize device dependent objects here (independent of window size).
 
+	//m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());
+
+	//ComPtr<ID3D11Resource> resource;
+
+	//DX::ThrowIfFailed(
+	//	CreateDDSTextureFromFile(m_d3dDevice.Get(), L"cat.dds",
+	//		resource.GetAddressOf(),
+	//		m_texture.ReleaseAndGetAddressOf()));
+
+	//ComPtr<ID3D11Texture2D> cat;
+	//DX::ThrowIfFailed(resource.As(&cat));
+
+	//CD3D11_TEXTURE2D_DESC catDesc;
+	//cat->GetDesc(&catDesc);
+
+	//m_origin.x = float(catDesc.Width / 2);
+	//m_origin.y = float(catDesc.Height / 2);
+
+	//m_tileRect.left = catDesc.Width * 2;
+	//m_tileRect.right = catDesc.Width * 6;
+	//m_tileRect.top = catDesc.Height * 2;
+	//m_tileRect.bottom = catDesc.Height * 6;
+
+	//m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
+
+	//DX::ThrowIfFailed(
+	//	CreateWICTextureFromFile(m_d3dDevice.Get(), L"sunset.jpg", nullptr,
+	//		m_background.ReleaseAndGetAddressOf()));
+
 	m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());
 
-	ComPtr<ID3D11Resource> resource;
-
 	DX::ThrowIfFailed(
-		CreateDDSTextureFromFile(m_d3dDevice.Get(), L"cat.dds",
-			resource.GetAddressOf(),
-			m_texture.ReleaseAndGetAddressOf()));
+		CreateWICTextureFromFile(m_d3dDevice.Get(), L"shipanimated.png", nullptr, m_texture.ReleaseAndGetAddressOf()));
 
-	ComPtr<ID3D11Texture2D> cat;
-	DX::ThrowIfFailed(resource.As(&cat));
+	m_ship = std::make_unique<AnimatedTexture>();
+	m_ship->Load(m_texture.Get(), 4, 20);
 
-	CD3D11_TEXTURE2D_DESC catDesc;
-	cat->GetDesc(&catDesc);
+	DX::ThrowIfFailed(CreateWICTextureFromFile(m_d3dDevice.Get(), L"starfield.png", nullptr, m_backgroundTex.ReleaseAndGetAddressOf()));
 
-	m_origin.x = float(catDesc.Width / 2);
-	m_origin.y = float(catDesc.Height / 2);
-
-	m_tileRect.left = catDesc.Width * 2;
-	m_tileRect.right = catDesc.Width * 6;
-	m_tileRect.top = catDesc.Height * 2;
-	m_tileRect.bottom = catDesc.Height * 6;
-
-	m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
-
-	DX::ThrowIfFailed(
-		CreateWICTextureFromFile(m_d3dDevice.Get(), L"sunset.jpg", nullptr,
-			m_background.ReleaseAndGetAddressOf()));
+	m_stars = std::make_unique<ScrollingBackground>();
+	m_stars->Load(m_backgroundTex.Get());
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -371,22 +387,34 @@ void Game::CreateResources()
     DX::ThrowIfFailed(m_d3dDevice->CreateDepthStencilView(depthStencil.Get(), &depthStencilViewDesc, m_depthStencilView.ReleaseAndGetAddressOf()));
 
     // TODO: Initialize windows-size dependent objects here.
-	m_screenPos.x = backBufferWidth / 2.0f;
-	m_screenPos.y = backBufferHeight / 2.0f;
 
-	m_fullscreenRect.left = 0;
-	m_fullscreenRect.top = 0;
-	m_fullscreenRect.right = backBufferWidth;
-	m_fullscreenRect.bottom = backBufferHeight;
+	//m_screenPos.x = backBufferWidth / 2.0f;
+	//m_screenPos.y = backBufferHeight / 2.0f;
+
+	//m_fullscreenRect.left = 0;
+	//m_fullscreenRect.top = 0;
+	//m_fullscreenRect.right = backBufferWidth;
+	//m_fullscreenRect.bottom = backBufferHeight;
+
+	m_shipPos.x = float(backBufferWidth / 2);
+	m_shipPos.y = float((backBufferHeight / 2) + (backBufferHeight / 4));
+
+	m_stars->SetWindow(backBufferWidth, backBufferHeight);
 }
 
 void Game::OnDeviceLost()
 {
-    // TODO: Add Direct3D resource cleanup here.
-	m_texture.Reset();
+ //   // TODO: Add Direct3D resource cleanup here.
+
+	//m_texture.Reset();
+	//m_spriteBatch.reset();
+	//m_states.reset();
+	//m_background.Reset();
+	m_ship.reset();
 	m_spriteBatch.reset();
-	m_states.reset();
-	m_background.Reset();
+	m_texture.Reset();
+	m_stars.reset();
+	m_backgroundTex.Reset();
 
     m_depthStencilView.Reset();
     m_renderTargetView.Reset();

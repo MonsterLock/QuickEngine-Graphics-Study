@@ -154,10 +154,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedTexture.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="QuickMath.h" />
     <ClInclude Include="QuickVec2.h" />
+    <ClInclude Include="ScrollingBackground.h" />
     <ClInclude Include="StepTimer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,8 @@
     <Image Include="cat.DDS" />
     <Image Include="cat.png" />
     <Image Include="directx.ico" />
+    <Image Include="shipanimated.png" />
+    <Image Include="starfield.png" />
     <Image Include="sunset.jpg" />
   </ItemGroup>
   <ItemGroup>

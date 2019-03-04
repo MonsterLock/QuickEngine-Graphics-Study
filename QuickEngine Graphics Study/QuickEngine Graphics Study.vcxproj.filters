@@ -31,6 +31,12 @@
     <ClInclude Include="QuickVec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AnimatedTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollingBackground.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -54,6 +60,12 @@
       <Filter>Assets</Filter>
     </Image>
     <Image Include="sunset.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="shipanimated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="starfield.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

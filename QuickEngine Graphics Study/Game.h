@@ -22,7 +22,8 @@
 #pragma once
 
 #include "StepTimer.h"
-
+#include "AnimatedTexture.h"
+#include "ScrollingBackground.h"
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -78,16 +79,20 @@ private:
     DX::StepTimer                                   m_timer;
 
 	// User Created.
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
+
+	//Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
+	//std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
+	//DirectX::SimpleMath::Vector2 m_screenPos;
+	//DirectX::SimpleMath::Vector2 m_origin;
+	//std::unique_ptr<DirectX::CommonStates> m_states;
+	//RECT m_tileRect;
+	//RECT m_fullscreenRect;
+	//Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_background;
 
 	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
-	DirectX::SimpleMath::Vector2 m_screenPos;
-	DirectX::SimpleMath::Vector2 m_origin;
-
-	std::unique_ptr<DirectX::CommonStates> m_states;
-
-	RECT m_tileRect;
-	RECT m_fullscreenRect;
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_background;
-
+	std::unique_ptr<AnimatedTexture> m_ship;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
+	DirectX::SimpleMath::Vector2 m_shipPos;
+	std::unique_ptr<ScrollingBackground> m_stars;
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_backgroundTex;
 };
