@@ -28,6 +28,9 @@
     <ClInclude Include="QuickMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QuickVec2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -37,9 +40,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QuickMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

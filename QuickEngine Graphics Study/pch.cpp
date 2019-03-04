@@ -1,7 +1,7 @@
 /*******************************************************************************************
 *	QuickEngine Graphics Study															   *
-*	pch.cpp																			   *
-*	Copyright 2019 Rogue-Gambler <https://github.com/Rogue-Gambler>						   *
+*	pch.cpp																			       *
+*	Copyright 2019 MonsterLock <https://github.com/MonsterLock>						       *
 *																						   *
 *	This file is part of the QuickEngine Graphics Study.								   *
 *																						   *

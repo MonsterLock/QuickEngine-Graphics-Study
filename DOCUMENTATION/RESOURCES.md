@@ -29,7 +29,7 @@
 - Animated math that really helps understand the intuition of several mathematical concepts.
 
 [Khan Academy](https://www.khanacademy.org/)
-- A site dedicated to teaching the foundations of several subject for free.
+- A site dedicated to teaching the foundations of several subjects for free.
 
 [The Ryg Blog](https://fgiesen.wordpress.com/2013/02/17/optimizing-sw-occlusion-culling-index/)
 - A blog with posts on barycentric coordinates and triangle rasterization.

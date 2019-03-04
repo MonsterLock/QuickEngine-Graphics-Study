@@ -1,7 +1,7 @@
 /*******************************************************************************************
 *	QuickEngine Graphics Study															   *
 *	QuickMath.h																			   *
-*	Copyright 2019 Rogue-Gambler <https://github.com/Rogue-Gambler>						   *
+*	Copyright 2019 MonsterLock <https://github.com/MonsterLock>						       *
 *																						   *
 *	This file is part of the QuickEngine Graphics Study.								   *
 *																						   *
@@ -18,17 +18,57 @@
 *	You should have received a copy of the GNU General Public License					   *
 *	along with The QuickEngine Graphics Study.  If not, see <http://www.gnu.org/licenses/>.*
 *******************************************************************************************/
-
 #pragma once
 #include <cmath>
 
-#define piF	3.14159.0f
-#define epsilonF 0.00001f
+static constexpr float PI = 3.14159265f;
+static constexpr float EPSILON = 0.00001f;
 
-class QuickMath
-{
-public:
-	QuickMath();
-	~QuickMath();
-};
+template <typename T>
+constexpr auto Square(const T& a) {
+	return a * a;
+}
 
+template <typename T>
+constexpr auto Cube(const T& a) {
+	return Square(a) * a;
+}
+
+template <typename T>
+constexpr auto Average(const T& a, const T& b) {
+	return (a + b) / 2;
+}
+
+template<typename T>
+constexpr bool IsEqual(const T& a, const T& b) {
+	return abs(a - b) < EPSILON;
+}
+
+const bool IsZero(const float a) {
+	return (abs(a)) < EPSILON;
+}
+
+template <typename T>
+constexpr auto Greater(const T& a, const T& b) {
+	return (a > b) ? a : b;
+}
+
+template <typename T>
+constexpr auto Lesser(const T& a, const T& b) {
+	return (a < b) ? a : b;
+}
+
+template <typename T>
+constexpr T DegToRads(T Deg) {
+	return (T)(Deg * PI / 180.0f);
+}
+
+template <typename T>
+constexpr T RadsToDeg(T Rad) {
+	return (T)(Rad * 180.0f / PI);
+}
+
+template <typename T>
+constexpr T lerp(const T& from, const T& to, const T& t) {
+	return from + t * (to - from);
+}
