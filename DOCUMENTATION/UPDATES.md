@@ -1,5 +1,5 @@
 >	QuickEngine Graphics Study                                                             
->	QuickEngine Graphics Study README													   
+>	QuickEngine Graphics Study UPDATES													   
 >	Copyright 2019 MonsterLock <https://github.com/MonsterLock>							   
 >	                                                                                       
 >	This file is part of the QuickEngine Graphics Study.								   
@@ -17,17 +17,8 @@
 >	You should have received a copy of the GNU General Public License					   
 >	along with The QuickEngine Graphics Study.  If not, see <http://www.gnu.org/licenses/>.
 
-# About
+# Updates
 
-**QuickEngine Graphics Study** is ~~the memest engine alive~~ a student project created for learning purposes by [MonsterLock](https://github.com/MonsterLock). The intention of this project is to further development and knowledge in:
-- DirectX 11
-- Intermediate/Advanced C++
-- Fundamentals of Computer Graphics
-
-This project was created using the Visual C++ template *Direct3D Win32 Game* following [the basic game loop setup tutorial](https://github.com/Microsoft/DirectXTK/wiki/The-basic-game-loop)
-
-## Documentation
-- [Resources](DOCUMENTATION/RESOURCES.md) that help establish or even inspire this codebase
-- Updates (Coming soon)
-
-**Thanks**: Special mention and thanks to my family and friends. A lot of people in academic discords are also all greatly appreciated for the time and patience spent responding to my questions and teaching me many concepts.
+*March 3, 2019*:
+- Added functions to QuickMath.h
+- Added QuickVec2.h file
