@@ -22,3 +22,4 @@
 *March 3, 2019*:
 - Added functions to QuickMath.h
 - Added QuickVec2.h file
+- [Added DirectX Tool Kit](https://github.com/Microsoft/DirectXTK/wiki/Adding-the-DirectX-Tool-Kit)

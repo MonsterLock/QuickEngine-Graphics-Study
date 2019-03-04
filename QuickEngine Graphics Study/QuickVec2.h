@@ -65,13 +65,13 @@ struct Vec2d {
 	}
 
 	bool operator==(const Vec2d& that) const {
-		if (IsEqual(x, that.x) && IsEqual(y, that.y)) return true;
+		if (x == that.x && y == that.y) return true;
 
 		return false;
 	}
 
 	bool operator!=(const Vec2d& that) const {
-		if (IsEqual(x, that.x) && IsEqual(y, that.y)) return false;
+		if (x == that.x && y == that.y) return false;
 
 		return true;
 	}
@@ -93,7 +93,7 @@ struct Vec2d {
 	}
 
 	static T OrientationHalf(const Vec2d<T>& a, const Vec2d<T>& b, const Vec2d<T>& c) {
-		return Det(b - a, c - a) / 2;
+		return DetHalf(b - a, c - a);
 	}
 
 	static T LengthSquared(const Vec2d<T>& a) {
@@ -133,6 +133,16 @@ struct Vec2d {
 		if (IsZero(Length(b))) return -a;
 
 		return (Projection(a, b) * 2) - a;
+	}
+
+	static Vec2d Lerp2d(const Vec2d<T>& a, const Vec2d<T>& b, const T& t) {
+		return Vec2d(Lerp(a.x, b.x, t), Lerp(a.y, b.y, t));
+	}
+
+	static bool CloseEnough(const Vec2d<T>& a, const Vec2d<T>& b) {
+		if (IsEqual(x, that.x) && IsEqual(y, that.y)) return true;
+
+		return false;
 	}
 };
 

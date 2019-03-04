@@ -69,6 +69,13 @@ constexpr T RadsToDeg(T Rad) {
 }
 
 template <typename T>
-constexpr T lerp(const T& from, const T& to, const T& t) {
+constexpr T Lerp(const T& from, const T& to, const T& t) {
 	return from + t * (to - from);
+}
+
+template <typename T>
+constexpr T Clamp(const T& value, const T& min, const T& max) {
+	if (value < min) return min;
+	else if (value > max) return max;
+	return value;
 }
