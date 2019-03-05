@@ -77,6 +77,8 @@
 #include "SpriteFont.h"
 #include "VertexTypes.h"
 #include "WICTextureLoader.h"
+#include <locale>
+#include <codecvt>
 
 namespace DX
 {

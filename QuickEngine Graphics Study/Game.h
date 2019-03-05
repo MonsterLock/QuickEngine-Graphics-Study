@@ -80,6 +80,7 @@ private:
 
 	// User Created.
 
+	// 1
 	//Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
 	//std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
 	//DirectX::SimpleMath::Vector2 m_screenPos;
@@ -89,10 +90,18 @@ private:
 	//RECT m_fullscreenRect;
 	//Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_background;
 
+	// 2
+	//std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
+	//std::unique_ptr<AnimatedTexture> m_ship;
+	//Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
+	//DirectX::SimpleMath::Vector2 m_shipPos;
+	//std::unique_ptr<ScrollingBackground> m_stars;
+	//Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_backgroundTex;
+
+	// 3
+	std::unique_ptr<DirectX::SpriteFont> m_font;
+	DirectX::SimpleMath::Vector2 m_fontPos;
 	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
-	std::unique_ptr<AnimatedTexture> m_ship;
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
-	DirectX::SimpleMath::Vector2 m_shipPos;
-	std::unique_ptr<ScrollingBackground> m_stars;
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_backgroundTex;
+
+
 };
