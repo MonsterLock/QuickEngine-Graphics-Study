@@ -12,3 +12,9 @@
  - Set values in `CreateResources` in Game.cpp
  - Add a sprite batch reset in `OnDeviceLost` in Game.cpp
  - Draw sprite in `Render` of Game.cpp
+ 
+ **Alpha Mode**
+  - Added a private delcaration to Game.h
+  - Set value in `CreateDevice` of Game.cpp
+  - Add a state reset in `OnDeviceLost` of Game.cpp
+  - Modified `Render` of Game.cpp
