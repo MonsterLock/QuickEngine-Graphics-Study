@@ -6,3 +6,9 @@
 - Create Windows Imaging Component(WIC) in `CreateDevice` of Game.cpp to load a bitmap
 - Add a texture reset in `OnDeviceLost` of Game.cpp
 
+**Drawing a Sprite**
+ - Added private delcarations to Game.h
+ - Modified `CreateDevice` in Game.cpp
+ - Set values in `CreateResources` in Game.cpp
+ - Add a sprite batch reset in `OnDeviceLost` in Game.cpp
+ - Draw sprite in `Render` of Game.cpp
