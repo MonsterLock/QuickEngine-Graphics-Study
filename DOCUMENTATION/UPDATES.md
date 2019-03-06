@@ -39,3 +39,16 @@
 - Completed [More tricks with sprites](https://github.com/Microsoft/DirectXTK/wiki/More-tricks-with-sprites)
   - Animating a sprite (Uses the AnimatedTexture.h)
   - Creating a scrolling background (Uses the ScrollingBackground.h)
+  
+*March 5, 2019*:
+ - Completed [Drawing Text](https://github.com/Microsoft/DirectXTK/wiki/Drawing-text)
+   - Created a font
+   - Drawing a text using that font
+   - Using ASCII text
+   - Drop-shadow effect
+   - Outline effect
+ 
+ *March 6, 2019*:
+ - Reviewing the first few studies
+   - Created separate project files for each lesson.
+   - Committed each phase and docuemented it.

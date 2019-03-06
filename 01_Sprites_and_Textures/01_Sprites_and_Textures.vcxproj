@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <RootNamespace>QuickEngine_Graphics_Study</RootNamespace>
-    <ProjectGuid>{4c65c54c-0a01-4888-97ae-83beb98dd4a4}</ProjectGuid>
+    <RootNamespace>_01_Sprites_and_Textures</RootNamespace>
+    <ProjectGuid>{db89e736-ff54-4a39-848c-2c42a7bb15bc}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -154,12 +154,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AnimatedTexture.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="QuickMath.h" />
-    <ClInclude Include="QuickVec2.h" />
-    <ClInclude Include="ScrollingBackground.h" />
     <ClInclude Include="StepTimer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -176,7 +172,13 @@
     <ResourceCompile Include="resource.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="myfile.spritefont" />
+    <Image Include="cat.png" />
+    <Image Include="directx.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="settings.manifest" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

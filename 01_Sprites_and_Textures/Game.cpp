@@ -1,23 +1,6 @@
-/*******************************************************************************************
-*	QuickEngine Graphics Study															   *
-*	Game.cpp																			   *
-*	Copyright 2019 MonsterLock <https://github.com/MonsterLock>						       *
-*																						   *
-*	This file is part of the QuickEngine Graphics Study.								   *
-*																						   *
-*	The QuickEngine Graphics Study is free software: you can redistribute it and/or modify *
-*	it under the terms of the GNU General Public License as published by				   *
-*	the Free Software Foundation, either version 3 of the License, or					   *
-*	(at your option) any later version.													   *
-*																						   *
-*	The QuickEngine Graphics Study is distributed in the hope that it will be useful,	   *
-*	but WITHOUT ANY WARRANTY; without even the implied warranty of						   *
-*	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the						   *
-*	GNU General Public License for more details.										   *
-*																						   *
-*	You should have received a copy of the GNU General Public License					   *
-*	along with The QuickEngine Graphics Study.  If not, see <http://www.gnu.org/licenses/>.*
-*******************************************************************************************/
+//
+// Game.cpp
+//
 
 #include "pch.h"
 #include "Game.h"
@@ -25,7 +8,6 @@
 extern void ExitGame();
 
 using namespace DirectX;
-using namespace DirectX::SimpleMath;
 
 using Microsoft::WRL::ComPtr;
 
@@ -74,9 +56,6 @@ void Game::Update(DX::StepTimer const& timer)
 
     // TODO: Add your game logic here.
     elapsedTime;
-	// 2
-	//m_ship->Update(elapsedTime);
-	//m_stars->Update(elapsedTime * 500);
 }
 
 // Draws the scene.
@@ -91,45 +70,6 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here.
-	float time = float(m_timer.GetTotalSeconds());
-
-	// 1
-	//m_spriteBatch->Begin();
-	//m_spriteBatch->Draw(m_background.Get(), m_fullscreenRect);
-	//m_spriteBatch->Draw(m_texture.Get(), m_screenPos, &m_tileRect, Colors::GreenYellow,
-	//	cosf(time) * 4.0f, m_origin,
-	//	cosf(time) + 2.0f);
-	//m_spriteBatch->Draw(m_texture.Get(), m_screenPos, nullptr, Colors::Crimson,
-	//	cosf(time) * 4.0f, m_origin,
-	//	cosf(time) + 2.0f);
-	//m_spriteBatch->End();
-
-	// 2
-	//m_spriteBatch->Begin();
-	//m_stars->Draw(m_spriteBatch.get());
-	//m_ship->Draw(m_spriteBatch.get(), m_shipPos);
-	//m_spriteBatch->End();
-
-	// 3
-	/*m_spriteBatch->Begin();
-
-	const wchar_t* output = L"Hello World";
-
-	Vector2 origin = m_font->MeasureString(output) / 2.0f;
-
-	m_font->DrawString(m_spriteBatch.get(), output,
-		m_fontPos + Vector2(1.0f, 1.0f), Colors::Black, 0.0f, origin);
-	m_font->DrawString(m_spriteBatch.get(), output,
-		m_fontPos + Vector2(-1.0f, 1.0f), Colors::Black, 0.0f, origin);
-	m_font->DrawString(m_spriteBatch.get(), output,
-		m_fontPos + Vector2(-1.0f, -1.0f), Colors::Black, 0.0f, origin);
-	m_font->DrawString(m_spriteBatch.get(), output,
-		m_fontPos + Vector2(1.0f, -1.0f), Colors::Black, 0.0f, origin);
-
-	m_font->DrawString(m_spriteBatch.get(), output,
-		m_fontPos, Colors::White, 0.0f, origin);
-
-	m_spriteBatch->End();*/
 
     Present();
 }
@@ -273,55 +213,9 @@ void Game::CreateDevice()
     DX::ThrowIfFailed(context.As(&m_d3dContext));
 
     // TODO: Initialize device dependent objects here (independent of window size).
-
-	// 1
-	//m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());
-
-	//ComPtr<ID3D11Resource> resource;
-
-	//DX::ThrowIfFailed(
-	//	CreateDDSTextureFromFile(m_d3dDevice.Get(), L"cat.dds",
-	//		resource.GetAddressOf(),
-	//		m_texture.ReleaseAndGetAddressOf()));
-
-	//ComPtr<ID3D11Texture2D> cat;
-	//DX::ThrowIfFailed(resource.As(&cat));
-
-	//CD3D11_TEXTURE2D_DESC catDesc;
-	//cat->GetDesc(&catDesc);
-
-	//m_origin.x = float(catDesc.Width / 2);
-	//m_origin.y = float(catDesc.Height / 2);
-
-	//m_tileRect.left = catDesc.Width * 2;
-	//m_tileRect.right = catDesc.Width * 6;
-	//m_tileRect.top = catDesc.Height * 2;
-	//m_tileRect.bottom = catDesc.Height * 6;
-
-	//m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
-
-	//DX::ThrowIfFailed(
-	//	CreateWICTextureFromFile(m_d3dDevice.Get(), L"sunset.jpg", nullptr,
-	//		m_background.ReleaseAndGetAddressOf()));
-
-	// 2
-	//m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());
-
-	//DX::ThrowIfFailed(
-	//	CreateWICTextureFromFile(m_d3dDevice.Get(), L"shipanimated.png", nullptr, m_texture.ReleaseAndGetAddressOf()));
-
-	//m_ship = std::make_unique<AnimatedTexture>();
-	//m_ship->Load(m_texture.Get(), 4, 20);
-
-	//DX::ThrowIfFailed(CreateWICTextureFromFile(m_d3dDevice.Get(), L"starfield.png", nullptr, m_backgroundTex.ReleaseAndGetAddressOf()));
-
-	//m_stars = std::make_unique<ScrollingBackground>();
-	//m_stars->Load(m_backgroundTex.Get());
-
-	// 3
-	/*m_font = std::make_unique<SpriteFont>(m_d3dDevice.Get(), L"myfile.spritefont");
-
-	m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());*/
+	DX::ThrowIfFailed(
+		CreateWICTextureFromFile(m_d3dDevice.Get(), L"cat.png", nullptr,
+			m_texture.ReleaseAndGetAddressOf()));
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -418,48 +312,12 @@ void Game::CreateResources()
     DX::ThrowIfFailed(m_d3dDevice->CreateDepthStencilView(depthStencil.Get(), &depthStencilViewDesc, m_depthStencilView.ReleaseAndGetAddressOf()));
 
     // TODO: Initialize windows-size dependent objects here.
-
-	// 1
-	//m_screenPos.x = backBufferWidth / 2.0f;
-	//m_screenPos.y = backBufferHeight / 2.0f;
-
-	//m_fullscreenRect.left = 0;
-	//m_fullscreenRect.top = 0;
-	//m_fullscreenRect.right = backBufferWidth;
-	//m_fullscreenRect.bottom = backBufferHeight;
-
-	// 2
-	//m_shipPos.x = float(backBufferWidth / 2);
-	//m_shipPos.y = float((backBufferHeight / 2) + (backBufferHeight / 4));
-
-	//m_stars->SetWindow(backBufferWidth, backBufferHeight);
-
-	// 3
-	/*m_fontPos.y = backBufferHeight / 2.0f;
-	m_fontPos.x = backBufferWidth / 2.0f;*/
 }
 
 void Game::OnDeviceLost()
 {
- //   // TODO: Add Direct3D resource cleanup here.
-
-	// 1
-	//m_texture.Reset();
-	//m_spriteBatch.reset();
-	//m_states.reset();
-	//m_background.Reset();
-
-	// 2
-	//m_ship.reset();
-	//m_spriteBatch.reset();
-	//m_texture.Reset();
-	//m_stars.reset();
-	//m_backgroundTex.Reset();
-
-
-	// 3
-	/*m_font.reset();
-	m_spriteBatch.reset();*/
+    // TODO: Add Direct3D resource cleanup here.
+	m_texture.Reset();
 
     m_depthStencilView.Reset();
     m_renderTargetView.Reset();

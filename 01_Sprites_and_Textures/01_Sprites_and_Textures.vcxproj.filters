@@ -2,17 +2,17 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Assets">
-      <UniqueIdentifier>d7b1b32d-5b97-44ff-a429-f6ed455beaff</UniqueIdentifier>
+      <UniqueIdentifier>936546e8-f264-4c74-945b-5c28413a761a</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{41fa52f6-b21d-4f7f-8b7d-6f2045e90ebd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{dbf962f2-f806-488d-8c4c-791ead79cfbe}</UniqueIdentifier>
+      <UniqueIdentifier>{9f5d20ee-c1b2-4238-bc76-61723b36761f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{9391bc3e-a206-430e-b2df-b0d500ea5eb6}</UniqueIdentifier>
+      <UniqueIdentifier>{5308e748-664c-4585-b880-028f5d616d3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{031decf1-68c1-453a-9526-016adfc54f12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,18 +23,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StepTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QuickMath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QuickVec2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimatedTexture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScrollingBackground.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,12 +38,24 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="directx.ico">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="cat.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="settings.manifest">
+      <Filter>Assets</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
     <ResourceCompile Include="resource.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="myfile.spritefont" />
   </ItemGroup>
 </Project>
