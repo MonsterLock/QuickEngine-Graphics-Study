@@ -70,7 +70,7 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here.
-	m_spriteBatch->Begin( SpriteSortMode_Deferred, m_states->NonPremultiplied());
+	m_spriteBatch->Begin();
 
 	m_spriteBatch->Draw(m_texture.Get(), m_screenPos, nullptr, Colors::White,
 		0.0f, m_origin);
@@ -223,7 +223,7 @@ void Game::CreateDevice()
 
 	ComPtr<ID3D11Resource> resource;
 	DX::ThrowIfFailed(
-		CreateWICTextureFromFile(m_d3dDevice.Get(), L"cat.png",
+		CreateDDSTextureFromFile(m_d3dDevice.Get(), L"cat.dds",
 			resource.GetAddressOf(),
 			m_texture.ReleaseAndGetAddressOf()));
 
