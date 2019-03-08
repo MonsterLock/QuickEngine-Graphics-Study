@@ -22,3 +22,6 @@
 **Using ASCII**
 - Add <locale> and <codecvt> to pch.h
 - Modify `Render` of Game.cpp by replacing previous text with a const char* converted to wide string.
+
+**Adding Drop-shadow Effect**
+- Modify `Render` of Game.cp to draw the text with an offset before drawing the main text

@@ -70,15 +70,19 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here.
-	const char *ascii = "Hello World";
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-	std::wstring output = converter.from_bytes(ascii);
-
 	m_spriteBatch->Begin();
 
-	DirectX::SimpleMath::Vector2 origin = m_font->MeasureString(output.c_str()) / 2.0f;
+	const wchar_t* output = L"Hello World";
 
-	m_font->DrawString(m_spriteBatch.get(), output.c_str(), m_fontPos, Colors::White, 0.0f, origin);
+	DirectX::SimpleMath::Vector2 origin = m_font->MeasureString(output) / 2.0f;
+
+	m_font->DrawString(m_spriteBatch.get(), output,
+		m_fontPos + DirectX::SimpleMath::Vector2(1.0f, 1.0f), Colors::Black, 0.0f, origin);
+	m_font->DrawString(m_spriteBatch.get(), output,
+		m_fontPos + DirectX::SimpleMath::Vector2(-1.0f, 1.0f), Colors::Black, 0.0f, origin);
+
+	m_font->DrawString(m_spriteBatch.get(), output,
+		m_fontPos, Colors::White, 0.0f, origin);
 
 	m_spriteBatch->End();
 
