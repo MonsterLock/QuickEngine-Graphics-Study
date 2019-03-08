@@ -15,3 +15,6 @@
 - Assign valyes to font position in `CreateResources` of Game.cpp
 - Add a reset to the sprite batch in `OnDeviceLost` of Game.cpp
 - Render a draw string in `Render` of Game.cpp
+
+**Using Wide String for Text**
+- Modify wide char to wide string in `Render` of Game.cpp
