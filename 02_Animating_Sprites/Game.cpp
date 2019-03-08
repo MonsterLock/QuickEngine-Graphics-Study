@@ -55,7 +55,7 @@ void Game::Update(DX::StepTimer const& timer)
     float elapsedTime = float(timer.GetElapsedSeconds());
 
     // TODO: Add your game logic here.
-    elapsedTime;
+    m_ship->Update(elapsedTime);
 }
 
 // Draws the scene.
@@ -70,6 +70,11 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here.
+	m_spriteBatch->Begin();
+
+	m_ship->Draw(m_spriteBatch.get(), m_shipPos);
+
+	m_spriteBatch->End();
 
     Present();
 }
@@ -213,6 +218,13 @@ void Game::CreateDevice()
     DX::ThrowIfFailed(context.As(&m_d3dContext));
 
     // TODO: Initialize device dependent objects here (independent of window size).
+	m_spriteBatch = std::make_unique<SpriteBatch>(m_d3dContext.Get());
+
+	DX::ThrowIfFailed(
+		CreateWICTextureFromFile(m_d3dDevice.Get(), L"shipanimated.png", nullptr, m_texture.ReleaseAndGetAddressOf()));
+
+	m_ship = std::make_unique<AnimatedTexture>();
+	m_ship->Load(m_texture.Get(), 4, 20);
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -241,7 +253,7 @@ void Game::CreateResources()
             // If the device was removed for any reason, a new device and swap chain will need to be created.
             OnDeviceLost();
 
-            // Everything is set up now. Do not continue execution of this method. OnDeviceLost will reenter this method 
+            // Everything is set up now. Do not continue execution of this method. OnDeviceLost will reenter this method
             // and correctly set up the new device.
             return;
         }
@@ -309,11 +321,16 @@ void Game::CreateResources()
     DX::ThrowIfFailed(m_d3dDevice->CreateDepthStencilView(depthStencil.Get(), &depthStencilViewDesc, m_depthStencilView.ReleaseAndGetAddressOf()));
 
     // TODO: Initialize windows-size dependent objects here.
+	m_shipPos.x = float(backBufferWidth / 2);
+	m_shipPos.y = float((backBufferHeight / 2) + (backBufferHeight / 4));
 }
 
 void Game::OnDeviceLost()
 {
     // TODO: Add Direct3D resource cleanup here.
+	m_ship.reset();
+	m_spriteBatch.reset();
+	m_texture.Reset();
 
     m_depthStencilView.Reset();
     m_renderTargetView.Reset();
