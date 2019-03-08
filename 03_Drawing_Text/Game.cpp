@@ -80,6 +80,10 @@ void Game::Render()
 		m_fontPos + DirectX::SimpleMath::Vector2(1.0f, 1.0f), Colors::Black, 0.0f, origin);
 	m_font->DrawString(m_spriteBatch.get(), output,
 		m_fontPos + DirectX::SimpleMath::Vector2(-1.0f, 1.0f), Colors::Black, 0.0f, origin);
+	m_font->DrawString(m_spriteBatch.get(), output,
+		m_fontPos + DirectX::SimpleMath::Vector2(-1.0f, -1.0f), Colors::Black, 0.0f, origin);
+	m_font->DrawString(m_spriteBatch.get(), output,
+		m_fontPos + DirectX::SimpleMath::Vector2(1.0f, -1.0f), Colors::Black, 0.0f, origin);
 
 	m_font->DrawString(m_spriteBatch.get(), output,
 		m_fontPos, Colors::White, 0.0f, origin);

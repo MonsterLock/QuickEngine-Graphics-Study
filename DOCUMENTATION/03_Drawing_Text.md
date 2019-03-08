@@ -24,4 +24,7 @@
 - Modify `Render` of Game.cpp by replacing previous text with a const char* converted to wide string.
 
 **Adding Drop-shadow Effect**
-- Modify `Render` of Game.cp to draw the text with an offset before drawing the main text
+- Modify `Render` of Game.cpp to draw the text with a couple offsets before drawing the main text
+
+**Adding Outline Effect**
+- Modify `Render` of Game.cpp to draw the text with a offsets on all sides of the text before drawing the main text
