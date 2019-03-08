@@ -59,4 +59,7 @@ private:
 
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
+
+	// User Defined
+	std::unique_ptr<DirectX::SpriteFont> m_font;
 };
