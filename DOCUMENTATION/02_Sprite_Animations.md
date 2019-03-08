@@ -4,7 +4,7 @@
 - Added private declarations to Game.h
 - make_unique SpriteBatch in `CreateDevice` of Game.cpp
 - Create WIC (Windows Imaging Component) from file in `CreateDevice` of Game.cpp
-- make_unique AnimatedTexture in `CreateDevice` of Game.cpp
+- Create new animated texture in `CreateDevice` of Game.cpp
 - Load m_ship in `CreateDevice` of Game.cpp
 - Assign values to sprite image in `CreateResources` of Game.cpp
 - Add reset functions to the sprite, spritebatch, and texture in `OnDeviceLost` of Game.cpp
@@ -17,7 +17,7 @@
 - Added "ScrollingBackground.h" to Game.h
 - Added private declarations to Game.h
 - Create WIC (Windows Imagaing Component) from file in `CreateDevice` of Game.cpp
-- make_unique ScrollingBackground in `CreateDevice` of Game.cpp
+- Create new scrolling background in `CreateDevice` of Game.cpp
 - Load m_stars in `CreateDevice` of Game.cpp
 - Assign values to image in `CreateResources` of Game.cpp
 - Add reset functions to image and background texture in `OnDeviceLost` of Game.cpp

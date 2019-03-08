@@ -8,3 +8,10 @@
 - Add a private declaration to Game.h
 - make_unique sprite font in `CreateDevice` of Game.cpp
 - Add reset to the font in `OnDeviceLost` of Game.cpp
+
+**Drawing Text Using a Font**
+- Add private declarations to Game.h
+- Create a new sprite batch in `CreateDevice` of Game.cpp
+- Assign valyes to font position in `CreateResources` of Game.cpp
+- Add a reset to the sprite batch in `OnDeviceLost` of Game.cpp
+- Render a draw string in `Render` of Game.cpp
