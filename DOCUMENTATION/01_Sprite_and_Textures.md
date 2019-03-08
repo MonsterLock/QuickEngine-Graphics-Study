@@ -32,3 +32,10 @@
 - Assigned rect values in `CreateDevice` of Game.cpp
 - Added argument to "m_spriteBatch->Begin()" in `Render` of Game.cpp
 - Changed third paramenter of "m_spriteBatch->Draw()" in `Render` of Game.cpp
+
+**Drawing a Background Image**
+- Added a rect and com object private declaration in Game.h
+- Created a WIC texture from file in `CreateDevice` of Game.cpp
+- Assigned values to the background rect in `CreateResources` of Game.cpp
+- Add a background reset to `OnDeviceLost` of Game.cpp
+- Modified the `Render` section of Game.cpp to render background before other iamges.

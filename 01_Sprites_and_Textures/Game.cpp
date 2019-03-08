@@ -74,6 +74,8 @@ void Game::Render()
 
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, nullptr, m_states->LinearWrap());
 
+	m_spriteBatch->Draw(m_background.Get(), m_fullscreenRect);
+
 	m_spriteBatch->Draw(m_texture.Get(), m_screenPos, &m_tileRect, Colors::Firebrick,
 		cosf(time) * 4.0f, m_origin, cosf(time) + 0.5f);
 
@@ -243,6 +245,9 @@ void Game::CreateDevice()
 	m_tileRect.top = catDesc.Height * 2;
 	m_tileRect.bottom = catDesc.Height * 6;
 
+	DX::ThrowIfFailed(
+		CreateWICTextureFromFile(m_d3dDevice.Get(), L"sunset.jpg", nullptr, m_background.ReleaseAndGetAddressOf()));
+
 	m_states = std::make_unique<CommonStates>(m_d3dDevice.Get());
 
 }
@@ -344,6 +349,10 @@ void Game::CreateResources()
 	m_screenPos.x = backBufferWidth / 2.0f;
 	m_screenPos.y = backBufferHeight / 2.0f;
 
+	m_fullscreenRect.left = 0;
+	m_fullscreenRect.right = backBufferWidth;
+	m_fullscreenRect.top = 0;
+	m_fullscreenRect.bottom = backBufferHeight;
 }
 
 void Game::OnDeviceLost()
@@ -352,6 +361,7 @@ void Game::OnDeviceLost()
 	m_texture.Reset();
 	m_spriteBatch.reset();
 	m_states.reset();
+	m_background.Reset();
 
     m_depthStencilView.Reset();
     m_renderTargetView.Reset();
