@@ -23,3 +23,12 @@
 - Converted .png to .dds (DirectDraw Surface)
 - Changed "CreateWICTextureFromFile" to "CreateDDSTextureFromFile" in `CreateDevice` of Game.cpp
 - Modified "m_spriteBatch->Begin()" to default in `Render` of Game.cpp
+
+**Rotating, Scaling, Tinting, and Tiling**
+- Changed the fifth parameter of "m_spriteBatch->Draw()" in `Render` of Game.cpp
+- Added a seventh parameter to "m_spriteBatch->Draw()" in `Render` of Game.cpp
+- Changed the fourth parameter of "m_spriteBatch->Draw()" in `Render` of Game.cpp
+- Added a rect to private declarations inside Game.h
+- Assigned rect values in `CreateDevice` of Game.cpp
+- Added argument to "m_spriteBatch->Begin()" in `Render` of Game.cpp
+- Changed third paramenter of "m_spriteBatch->Draw()" in `Render` of Game.cpp
