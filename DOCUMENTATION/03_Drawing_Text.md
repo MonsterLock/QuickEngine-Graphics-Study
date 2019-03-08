@@ -18,3 +18,7 @@
 
 **Using Wide String for Text**
 - Modify wide char to wide string in `Render` of Game.cpp
+
+**Using ASCII**
+- Add <locale> and <codecvt> to pch.h
+- Modify `Render` of Game.cpp by replacing previous text with a const char* converted to wide string.
