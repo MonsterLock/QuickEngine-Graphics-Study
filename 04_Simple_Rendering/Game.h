@@ -69,4 +69,5 @@ private:
 	DirectX::SimpleMath::Matrix m_view;
 	DirectX::SimpleMath::Matrix m_proj;
 
+	Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_raster;
 };

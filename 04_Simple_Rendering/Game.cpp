@@ -55,7 +55,7 @@ void Game::Update(DX::StepTimer const& timer)
     float elapsedTime = float(timer.GetElapsedSeconds());
 
     // TODO: Add your game logic here.
-    elapsedTime;
+    m_world = DirectX::SimpleMath::Matrix::CreateRotationX( cosf ( static_cast<float>(timer.GetTotalSeconds())));
 }
 
 // Draws the scene.
@@ -72,7 +72,7 @@ void Game::Render()
     // TODO: Add your rendering code here.
 	m_d3dContext->OMSetBlendState(m_states->Opaque(), nullptr, 0xFFFFFFFF);
 	m_d3dContext->OMSetDepthStencilState(m_states->DepthNone(), 0);
-	m_d3dContext->RSSetState(m_states->CullNone());
+	m_d3dContext->RSSetState(m_raster.Get());
 
 	m_effect->SetWorld(m_world);
 
@@ -275,6 +275,12 @@ void Game::CreateDevice()
 
 	m_world = DirectX::SimpleMath::Matrix::Identity;
 
+	CD3D11_RASTERIZER_DESC rastDesc(D3D11_FILL_SOLID, D3D11_CULL_NONE, FALSE,
+		D3D11_DEFAULT_DEPTH_BIAS, D3D11_DEFAULT_DEPTH_BIAS_CLAMP,
+		D3D11_DEFAULT_SLOPE_SCALED_DEPTH_BIAS, TRUE, FALSE, FALSE, TRUE);
+
+	DX::ThrowIfFailed(m_d3dDevice->CreateRasterizerState(&rastDesc, m_raster.ReleaseAndGetAddressOf()));
+
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -392,6 +398,7 @@ void Game::OnDeviceLost()
 	m_effect.reset();
 	m_batch.reset();
 	m_inputLayout.Reset();
+	m_raster.Reset();
 
     m_depthStencilView.Reset();
     m_renderTargetView.Reset();

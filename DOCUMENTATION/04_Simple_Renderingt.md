@@ -14,3 +14,10 @@
 - Assign the world matrix to the identity matrix in `CreateDevice` of Game.cpp;
 - Assign the view and projection matrices in `CreateResources` of Game.cpp
 - Draw the grid in `Render` of Game.cpp
+
+**Anti-aliasing**
+- Update grid to rotate in `Update` of Game.cpp
+- Create a private declaration in Game.h
+- Create a rasterizer description in `CreateDevice` of Game.cpp
+- Create a reset for the raster in `OnDeviceLost` of Game.cpp
+- Modify by setting the raster set from culling none to get() in `Render` of Game.cpp
