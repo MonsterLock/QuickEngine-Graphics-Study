@@ -80,9 +80,9 @@ void Game::Render()
 
 	m_batch->Begin();
 
-	VertexPositionColor v1(DirectX::SimpleMath::Vector3(0.0f, 0.5f, 0.5f), Colors::Yellow);
-	VertexPositionColor v2(DirectX::SimpleMath::Vector3(0.5f, -0.5f, 0.5f), Colors::Yellow);
-	VertexPositionColor v3(DirectX::SimpleMath::Vector3(-0.5f, -0.5f, 0.5f), Colors::Yellow);
+	VertexPositionColor v1(DirectX::SimpleMath::Vector3(400.0f, 150.5f, 0.0f), Colors::Yellow);
+	VertexPositionColor v2(DirectX::SimpleMath::Vector3(600.5f, 450.5f, 0.0f), Colors::Yellow);
+	VertexPositionColor v3(DirectX::SimpleMath::Vector3(200.5f, 450.5f, 0.0f), Colors::Yellow);
 
 	m_batch->DrawTriangle(v1, v2, v3);
 
@@ -342,6 +342,10 @@ void Game::CreateResources()
     DX::ThrowIfFailed(m_d3dDevice->CreateDepthStencilView(depthStencil.Get(), &depthStencilViewDesc, m_depthStencilView.ReleaseAndGetAddressOf()));
 
     // TODO: Initialize windows-size dependent objects here.
+	DirectX::SimpleMath::Matrix proj = DirectX::SimpleMath::Matrix::CreateScale(2.0f / float(backBufferWidth),
+		-2.0f / float(backBufferHeight), 1.0f)
+		* DirectX::SimpleMath::Matrix::CreateTranslation(-1.0f, 1.0f, 0.0f);
+	m_effect->SetProjection(proj);
 }
 
 void Game::OnDeviceLost()
