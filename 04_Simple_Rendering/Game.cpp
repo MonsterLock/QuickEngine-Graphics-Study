@@ -74,17 +74,43 @@ void Game::Render()
 	m_d3dContext->OMSetDepthStencilState(m_states->DepthNone(), 0);
 	m_d3dContext->RSSetState(m_states->CullNone());
 
+	m_effect->SetWorld(m_world);
+
 	m_effect->Apply(m_d3dContext.Get());
 
 	m_d3dContext->IASetInputLayout(m_inputLayout.Get());
 
 	m_batch->Begin();
 
-	VertexPositionColor v1(DirectX::SimpleMath::Vector3(400.0f, 150.5f, 0.0f), Colors::Yellow);
-	VertexPositionColor v2(DirectX::SimpleMath::Vector3(600.5f, 450.5f, 0.0f), Colors::Yellow);
-	VertexPositionColor v3(DirectX::SimpleMath::Vector3(200.5f, 450.5f, 0.0f), Colors::Yellow);
+	DirectX::SimpleMath::Vector3 xaxis(2.0f, 0.0f, 0.0f);
+	DirectX::SimpleMath::Vector3 yaxis(0.0f, 0.0f, 2.0f);
+	DirectX::SimpleMath::Vector3 origin = DirectX::SimpleMath::Vector3::Zero;
 
-	m_batch->DrawTriangle(v1, v2, v3);
+	size_t divisions = 20;
+
+	for (size_t i = 0; i <= divisions; ++i)
+	{
+		float fPercent = float(i) / float(divisions);
+		fPercent = (fPercent * 2.0f) - 1.0f;
+
+		DirectX::SimpleMath::Vector3 scale = xaxis * fPercent + origin;
+
+		VertexPositionColor v1(scale - yaxis, Colors::White);
+		VertexPositionColor v2(scale + yaxis, Colors::White);
+		m_batch->DrawLine(v1, v2);
+	}
+
+	for (size_t i = 0; i <= divisions; ++i)
+	{
+		float fPercent = float(i) / float(divisions);
+		fPercent = (fPercent * 2.0f) - 1.0f;
+
+		DirectX::SimpleMath::Vector3 scale = yaxis * fPercent + origin;
+
+		VertexPositionColor v1(scale - xaxis, Colors::White);
+		VertexPositionColor v2(scale + xaxis, Colors::White);
+		m_batch->DrawLine(v1, v2);
+	}
 
 	m_batch->End();
     Present();
@@ -246,6 +272,9 @@ void Game::CreateDevice()
 			m_inputLayout.ReleaseAndGetAddressOf()));
 
 	m_batch = std::make_unique<PrimitiveBatch<VertexPositionColor>>(m_d3dContext.Get());
+
+	m_world = DirectX::SimpleMath::Matrix::Identity;
+
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -346,6 +375,14 @@ void Game::CreateResources()
 		-2.0f / float(backBufferHeight), 1.0f)
 		* DirectX::SimpleMath::Matrix::CreateTranslation(-1.0f, 1.0f, 0.0f);
 	m_effect->SetProjection(proj);
+
+	m_view = DirectX::SimpleMath::Matrix::CreateLookAt(DirectX::SimpleMath::Vector3(2.0f, 2.0f, 2.0f),
+		DirectX::SimpleMath::Vector3::Zero, DirectX::SimpleMath::Vector3::UnitY);
+	m_proj = DirectX::SimpleMath::Matrix::CreatePerspectiveFieldOfView(XM_PI / 4.0f,
+		float(backBufferWidth) / float(backBufferHeight), 1.0f, 10.0f);
+
+	m_effect->SetView(m_view);
+	m_effect->SetProjection(m_proj);
 }
 
 void Game::OnDeviceLost()

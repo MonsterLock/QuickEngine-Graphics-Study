@@ -8,3 +8,9 @@
 **Pixel vs. Normalized Coordinates**
 - Created a projection matrix in `CreateResources` of Game.cpp
 - Changed the vertex positions based on pixel position in `Render` of Game.cpp
+
+**Drawing a Grid**
+- Add private declarations to Game.h
+- Assign the world matrix to the identity matrix in `CreateDevice` of Game.cpp;
+- Assign the view and projection matrices in `CreateResources` of Game.cpp
+- Draw the grid in `Render` of Game.cpp
