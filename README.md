@@ -26,7 +26,7 @@
 
 This project was created using the Visual C++ template *Direct3D Win32 Game* following [the basic game loop setup tutorial](https://github.com/Microsoft/DirectXTK/wiki/The-basic-game-loop)
 
-## Documentation
+## [Documentation](DOCUMENTATION)
 - [Updates](DOCUMENTATION/UPDATES.md) provide the latest modifications/additions
 - [Resources](DOCUMENTATION/RESOURCES.md) that help establish or even inspire this codebase
 
