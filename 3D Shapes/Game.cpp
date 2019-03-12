@@ -55,7 +55,8 @@ void Game::Update(DX::StepTimer const& timer)
     float elapsedTime = float(timer.GetElapsedSeconds());
 
     // TODO: Add your game logic here.
-    elapsedTime;
+	float time = float(timer.GetTotalSeconds());
+	m_world = DirectX::SimpleMath::Matrix::CreateRotationZ(cosf(time) * 2.0f);
 }
 
 // Draws the scene.
@@ -70,6 +71,7 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here.
+	m_shape->Draw(m_world, m_view, m_proj);
 
     Present();
 }
@@ -213,6 +215,9 @@ void Game::CreateDevice()
     DX::ThrowIfFailed(context.As(&m_d3dContext));
 
     // TODO: Initialize device dependent objects here (independent of window size).
+	m_shape = GeometricPrimitive::CreateSphere(m_d3dContext.Get());
+
+	m_world = DirectX::SimpleMath::Matrix::Identity;
 }
 
 // Allocate all memory resources that change on a window SizeChanged event.
@@ -241,7 +246,7 @@ void Game::CreateResources()
             // If the device was removed for any reason, a new device and swap chain will need to be created.
             OnDeviceLost();
 
-            // Everything is set up now. Do not continue execution of this method. OnDeviceLost will reenter this method 
+            // Everything is set up now. Do not continue execution of this method. OnDeviceLost will reenter this method
             // and correctly set up the new device.
             return;
         }
@@ -309,11 +314,16 @@ void Game::CreateResources()
     DX::ThrowIfFailed(m_d3dDevice->CreateDepthStencilView(depthStencil.Get(), &depthStencilViewDesc, m_depthStencilView.ReleaseAndGetAddressOf()));
 
     // TODO: Initialize windows-size dependent objects here.
+	m_view = DirectX::SimpleMath::Matrix::CreateLookAt(DirectX::SimpleMath::Vector3(2.0f, 2.0f, 2.0f),
+		DirectX::SimpleMath::Vector3::Zero, DirectX::SimpleMath::Vector3::UnitY);
+	m_proj = DirectX::SimpleMath::Matrix::CreatePerspectiveFieldOfView(XM_PI / 4.0f,
+		float(backBufferWidth) / float(backBufferHeight), 0.1f, 10.0f);
 }
 
 void Game::OnDeviceLost()
 {
     // TODO: Add Direct3D resource cleanup here.
+	m_shape.reset();
 
     m_depthStencilView.Reset();
     m_renderTargetView.Reset();

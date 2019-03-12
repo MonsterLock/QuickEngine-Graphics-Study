@@ -59,4 +59,10 @@ private:
 
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
+
+	// User Defined.
+	DirectX::SimpleMath::Matrix m_world;
+	DirectX::SimpleMath::Matrix m_view;
+	DirectX::SimpleMath::Matrix m_proj;
+	std::unique_ptr<DirectX::GeometricPrimitive> m_shape;
 };
