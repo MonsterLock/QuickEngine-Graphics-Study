@@ -21,3 +21,9 @@
 - Create a rasterizer description in `CreateDevice` of Game.cpp
 - Create a reset for the raster in `OnDeviceLost` of Game.cpp
 - Modify by setting the raster set from culling none to get() in `Render` of Game.cpp
+
+**Multisampling**
+- Modified the rasterizer description in `CreateDevice` of Game.cpp
+- Change the sample count for both swap chains in `CreateResources` of Game.cpp
+- Change the depth/stencil texture description in `CreateResources` of Game.cpp
+- Change the depth/stencil texture view description in `CreateResources` of Game.cpp
