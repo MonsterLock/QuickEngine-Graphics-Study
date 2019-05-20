@@ -19,7 +19,7 @@
 
 # About
 
-**QuickEngine Graphics Study** is ~~the memest engine alive~~ a student project created for learning purposes by [MonsterLock](https://github.com/MonsterLock). The intention of this project is to further development and knowledge in:
+**QuickEngine Graphics Study** is a quick project following different tutorials. The intention of this project is to further development and knowledge in:
 - DirectX 11
 - Intermediate/Advanced C++
 - Fundamentals of Computer Graphics
